@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form id = "pers_form" action = "{{url_for('get_ans')}}">
+    <label for="personality_input"> Text input for the person, (name and other descriptors) </label>
+    <input name="personality_input" id="personality_input" required/>
+    <input type="submit" value="Give it to the checker"/>
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+           /* attach a submit handler to the form */
+       $("#pers_form").submit(function(event) {
+
+           /* stop form from submitting normally */
+           event.preventDefault();
+
+           /* get some values from elements on the page: */
+           var $form = $(this),
+               text_inp = $form.find('input[name="personality_input"]').val(),
+               url = $form.attr('action');
+
+           /* Send the data using post */
+           var posting = $.post(url, {
+               personality_input: text_inp
+           });
+
+       });
+   </script>
+{% endblock %}

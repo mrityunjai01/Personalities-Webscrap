@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Personality Check</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+function clearText(field)
+{
+if (field.defaultValue == field.value) field.value = '';
+else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+</head>
+<body>
+<div id="container">
+  <div id="header_panel">
+    <div id="site_title">
+      <h1>Personality Check <span> Check your buddies! </span></h1>
+      <h2>using python</h2>
+    </div>
+    <div id="search_box">
+      <form method="get" action="#">
+        <input name="keyword" type="text" value="Search..." id="searchfield"  onfocus="clearText(this)" onblur="clearText(this)" />
+        <input type="submit" name="submit" id="searchbutton" value="" />
+      </form>
+    </div>
+  </div>
+  <!-- end of header panel -->
+  <div id="banner_panel">
+    <div id="banner_section">
+      <h1>New Website Editor</h1>
+      <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc quis sem nec tellus blandit tincidunt. Aliquam tristique lacus in sapien. Aliquam tristique lacus in sapien. </p>
+      <div class="readmore"><a href="#">Read more</a></div>
+    </div>
+    <!-- end of banner section -->
+    <div id="menu_section">
+      <ul>
+        <li><a href="#" class="current">01<span class="current">Home</span></a></li>
+        <li><a href="#">02<span>Products</span></a></li>
+        <li><a href="#">03<span>Partners</span></a></li>
+        <li><a href="#">04<span>Support</span></a></li>
+        <li><a href="#">05<span>About Us</span></a></li>
+        <li><a href="#">06<span>Contact Us</span></a></li>
+      </ul>
+    </div>
+    <!-- end of menu section -->
+  </div>
+  <!-- end of banner panel -->
+  <div id="content_top"></div>
+  <div id="content">
+    <div id="content_left">
+      <h1>Welcome to Personality check</h1>
+      {% block content %}{% endblock %}
+    </div>
+    <!-- end of content left -->
+    <div id="content_right">
+      <div class="content_right_product_01">
+        <h1>Full Package</h1>
+        <h2>Vivamus felis?</h2>
+        <ul>
+          <li>&raquo; Eeros ac tincidunt</li>
+          <li>&raquo; Aliquam tristique lacus</li>
+          <li>&raquo; Lacus et dictum tristique</li>
+        </ul>
+        <div class="readmore"><a href="#">Details</a></div>
+      </div>
+      <div class="content_right_product_02">
+        <h1>Basic Package</h1>
+        <h2>Curabitur eleifend?</h2>
+        <ul>
+          <li>&raquo; Aliquam tristique lacu</li>
+          <li>&raquo; Nunc aliquam dolor vitae</li>
+          <li>&raquo; Quisque facilisis suscipit</li>
+        </ul>
+        <div class="readmore"><a href="#">Details</a></div>
+      </div>
+    </div>
+    <!-- end of content right -->
+  </div>
+  <div id="content_bottom"></div>
+  <div id="footer"> <a href="#"> Here </a> </div>
+  <!-- end of footer -->
+</div>
+<!-- end of container -->
+</body>
+</html>
