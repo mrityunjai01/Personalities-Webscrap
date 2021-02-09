@@ -22,3 +22,6 @@ python predict_type.py --testcase 5 --inputfile “names.txt”
 ## What does this thing use
 It makes crawlers crawl google search page for some personalities and get lots of text to do sentiment analysis.
 To do this, I have used the python library (package in the python terminology) scrapy. (check the spiders/quotes_spider.py and predict_type.py)
+
+## I am lazy, I like web
+https://personality-check-99.herokuapp.com/
