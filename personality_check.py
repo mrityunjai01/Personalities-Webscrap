@@ -1,9 +1,10 @@
 import argparse
 from spiders.quotes_spider import GoogleSpider
 from scrapy.crawler import CrawlerProcess
+import uuid
 
-def check(input_text, outfile):
-
+def check(input_text):
+    outfile=str(uuid.uuid4())
     process = CrawlerProcess()
 
     testcase = 0
@@ -16,3 +17,4 @@ def check(input_text, outfile):
         testcase+= 1
 
     process.start()
+    return outfile
