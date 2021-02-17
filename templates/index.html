@@ -5,26 +5,61 @@
     <input name="personality_input" id="personality_input" required/>
     <input type="submit" value="Give it to the checker"/>
   </form>
+  <div id ="form_output">
+  </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  <ul id = "download_list">
+  </ul>
 
   <script>
+          document.addEventListener("touchstart", function(){}, true);
+          // var ev;
+          // function function1(desiredLink, desiredText) {
+          //         var ul = document.getElementById("download_list");
+          //         var li = document.createElement("li");
+          //         $('<a href="'+desiredLink+'">'+desiredText+'</a>').appendTo($('body'));
+          //         li.appendChild(document.createTextNode("Four"));
+          //         ul.appendChild(li);
+          // }
+
            /* attach a submit handler to the form */
-       $("#pers_form").submit(function(event) {
+       $(document).ready(function () {
+               $('#pers_form').on('submit', function(e) {
+                        e.preventDefault();
+                        var newElement = $('<li>Working...</li>').appendTo($("#download_list"));
+                        person = $(this).find('input[name="personality_input"]').val();
+                        $.ajax({
+                            url : $(this).attr('action') || window.location.pathname,
+                            type: "POST",
+                            method: "POST",
+                            data: {
+                                    personality_input: person,
 
-           /* stop form from submitting normally */
-           event.preventDefault();
+                            },
+                            error: function (jXHR, textStatus, errorThrown) {
+                                alert(errorThrown);
+                            }
+                        }).done(function (response) {
+                                alert("21");
+                                var outfile = response.toString();
 
-           /* get some values from elements on the page: */
-           var $form = $(this),
-               text_inp = $form.find('input[name="personality_input"]').val(),
-               url = $form.attr('action');
-
-           /* Send the data using post */
-           var posting = $.post(url, {
-               personality_input: text_inp
-           });
-
-       });
+                                console.log("Request complete and successful");
+                                console.log(response);
+                                d = new Date();
+                                newElement.html(`
+                                        <a href = "{{url_for('download', filename='po')}}${outfile}">
+                                                ${person} description
+                                        </a>
+                                        <a href = "{{url_for('download', filename='link_')}}${outfile}">
+                                                ${person} file of links
+                                        </a>
+                                        ${d.toLocaleString()}
+                                `);
+                        });
+                });
+        });
    </script>
 {% endblock %}
